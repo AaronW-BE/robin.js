@@ -6,8 +6,8 @@ export default class Player extends Component{
         super();
         super.setRender(this.draw)
 
-        this.x = 20
-        this.y =
+        this.x = 0
+        this.y = 0
         this.image = new Image();
         this.image.src = IMG_SRC
         // this.image.width = 128
@@ -18,7 +18,7 @@ export default class Player extends Component{
 
         this.ctx = ctx;
         this._ani_current_index = 0;
-        
+
         let _this = this
         this.start();
 
@@ -60,7 +60,7 @@ export default class Player extends Component{
 
     c(){
         this._ani_current_index++;
-        
+
         if(this._ani_current_index > 3){
             this._ani_current_index = 0;
         }
@@ -77,10 +77,10 @@ export default class Player extends Component{
         }
 
         if(this.x >= canvas.width - 50){
-            this.walk_left = false 
+            this.walk_left = false
         }
 
-        if(this.x <= 20){
+        if(this.x <= 0){
             this.walk_left = true;
         }
 
@@ -94,16 +94,16 @@ export default class Player extends Component{
     __walk_left(ctx, img){
         let cut_width = img.width / 4;
         let cut_height = 48;
-        
-        ctx.drawImage(img, cut_width * this._ani_current_index, 47, cut_width, cut_height, this.x, 60, cut_width * 2,cut_height *2)
+
+        ctx.drawImage(img, cut_width * this._ani_current_index, 47, cut_width, cut_height, this.x, this.y, cut_width * 2,cut_height *2)
     }
 
     __walk_right(ctx, img){
 
         let cut_width = img.width / 4;
         let cut_height = 48;
-        
-        ctx.drawImage(img, cut_width * this._ani_current_index, 94, cut_width, cut_height, this.x, 60, cut_width * 2,cut_height *2)
+
+        ctx.drawImage(img, cut_width * this._ani_current_index, 94, cut_width, cut_height, this.x, this.y, cut_width * 2,cut_height *2)
 
     }
 
